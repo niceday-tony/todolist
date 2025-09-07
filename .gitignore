@@ -155,3 +155,39 @@ mysql-data/
 *.swn
 *.orig
 *.rej
+
+# Logs
+logs
+dev-debug.log
+
+# Dependency directories
+# Environment variables
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS specific
+
+# ========================
+# Task Master
+# ========================
+# 작업 중 생성되는 파일들
+scripts/tasks.json
+scripts/complexity.json
+scripts/PRD.txt
+scripts/*.backup
+scripts/workspace/
+.taskmaster/state.json
+
+# 로컬 전용 설정
+CLAUDE.local.md
+*.local.md
+
+# Task Master 임시 파일
+.taskmaster-cache/
+.tm-session/

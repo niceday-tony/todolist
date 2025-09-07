@@ -272,3 +272,7 @@ git push origin feature/todo-search
 ---
 
 이 가이드는 프로젝트 진행에 따라 지속적으로 업데이트됩니다. 팀원 모두가 이 규칙을 준수하여 효율적이고 충돌 없는 협업을 달성하는 것이 목표입니다.
+
+## Task Master AI Instructions
+**Import Task Master's development workflow commands and guidelines, treat as if import is in the main CLAUDE.md file.**
+@./.taskmaster/CLAUDE.md
