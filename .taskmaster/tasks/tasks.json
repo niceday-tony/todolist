@@ -1,0 +1,152 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Vue3 프론트엔드 프로젝트 초기화 및 설정",
+        "description": "Vue 3.4 + TypeScript 프로젝트를 초기화하고 필요한 개발 도구들을 설정합니다.",
+        "details": "Vue CLI 또는 Vite를 사용하여 Vue 3.4 + TypeScript 프로젝트를 생성하고, 다음 도구들을 설정합니다:\n- Vite 빌드 도구 설정\n- TypeScript 설정 (strict mode)\n- Vue Router 4 라우팅 설정\n- Pinia 상태 관리 라이브러리 설정\n- Tailwind CSS 3 스타일링 프레임워크 설정\n- Axios HTTP 클라이언트 설정\n- ESLint + Prettier 코드 품질 도구 설정\n- Vite 환경변수 설정 (.env 파일)",
+        "testStrategy": "프로젝트 빌드 및 개발 서버 실행 테스트, TypeScript 컴파일 오류 없음 확인, 각 라이브러리 정상 import 확인",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 2,
+        "title": "백엔드 패키지 구조 및 기본 설정 완성",
+        "description": "Spring Boot 프로젝트의 패키지 구조를 설계하고 공통 설정을 완성합니다.",
+        "details": "다음 패키지 구조를 생성합니다:\n- com.study.todolist.controller (REST 컨트롤러)\n- com.study.todolist.service (비즈니스 로직)\n- com.study.todolist.repository (데이터 접근)\n- com.study.todolist.entity (JPA 엔티티)\n- com.study.todolist.dto (데이터 전송 객체)\n- com.study.todolist.form (요청 폼 클래스)\n- com.study.todolist.config (설정 클래스)\n- com.study.todolist.exception (예외 처리)\n- com.study.todolist.util (유틸리티)\n\n추가 설정:\n- CORS 설정 (프론트엔드 연동 준비)\n- 글로벌 예외 처리기\n- 공통 응답 DTO 클래스\n- API 응답 표준화",
+        "testStrategy": "Spring Boot 애플리케이션 정상 구동 확인, 기본 health check 엔드포인트 테스트, 데이터베이스 연결 확인",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 3,
+        "title": "Todo 엔티티 및 DTO 클래스 설계",
+        "description": "Todo 도메인의 JPA 엔티티와 관련 DTO 클래스들을 설계하고 구현합니다.",
+        "details": "Todo Entity 설계:\n- id (Long, @Id, @GeneratedValue)\n- title (String, @NotNull, 최대 200자)\n- description (String, TEXT 타입)\n- completed (Boolean, 기본값 false)\n- createdAt (LocalDateTime, @CreationTimestamp)\n- updatedAt (LocalDateTime, @UpdateTimestamp)\n\nDTO 클래스 생성:\n- TodoCreateRequest (제목, 설명 입력)\n- TodoUpdateRequest (제목, 설명, 완료상태 수정)\n- TodoResponse (모든 필드 응답)\n- TodoListResponse (목록 응답용, 페이징 지원)\n\n입력 검증:\n- @Valid, @NotBlank, @Size 어노테이션 활용\n- 커스텀 검증 메시지 설정",
+        "testStrategy": "Entity 매핑 테스트, DTO 직렬화/역직렬화 테스트, 입력 검증 규칙 테스트, 데이터베이스 스키마 자동 생성 확인",
+        "priority": "high",
+        "dependencies": [
+          2
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 4,
+        "title": "Todo Repository 인터페이스 구현",
+        "description": "JpaRepository를 확장한 Todo 데이터 접근 계층을 구현합니다.",
+        "details": "TodoRepository 인터페이스 생성:\n- JpaRepository<Todo, Long> 확장\n- 커스텀 쿼리 메서드 정의:\n  - findByCompletedOrderByCreatedAtDesc(Boolean completed)\n  - findByTitleContainingIgnoreCaseOrderByCreatedAtDesc(String title)\n  - countByCompleted(Boolean completed)\n\n페이징 및 정렬 지원:\n- Pageable 매개변수 활용\n- 기본 정렬: 생성일 내림차순\n- 검색 기능을 위한 쿼리 메서드\n\n네이티브 쿼리 (필요시):\n- 복잡한 검색 조건 처리\n- 성능 최적화를 위한 인덱스 활용",
+        "testStrategy": "@DataJpaTest를 활용한 Repository 테스트, CRUD 기본 동작 테스트, 커스텀 쿼리 메서드 테스트, 페이징 및 정렬 기능 테스트",
+        "priority": "medium",
+        "dependencies": [
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 5,
+        "title": "Todo Service 계층 구현",
+        "description": "Todo의 비즈니스 로직을 담당하는 Service 계층을 구현합니다.",
+        "details": "TodoService 클래스 구현:\n- @Service 어노테이션\n- @Transactional 트랜잭션 관리\n\n비즈니스 메서드:\n- createTodo(TodoCreateRequest): 새 할일 생성\n- updateTodo(Long id, TodoUpdateRequest): 할일 수정\n- deleteTodo(Long id): 할일 삭제\n- getTodo(Long id): 할일 상세 조회\n- getAllTodos(Pageable): 전체 목록 조회\n- getCompletedTodos(Boolean completed, Pageable): 완료 상태별 조회\n- searchTodos(String keyword, Pageable): 제목 검색\n- toggleComplete(Long id): 완료 상태 토글\n\n예외 처리:\n- TodoNotFoundException 커스텀 예외\n- 비즈니스 규칙 검증",
+        "testStrategy": "@ExtendWith(MockitoExtension.class)를 활용한 Service 계층 단위 테스트, Repository 모킹, 비즈니스 로직 검증, 예외 상황 테스트",
+        "priority": "medium",
+        "dependencies": [
+          4
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 6,
+        "title": "Todo REST API Controller 구현",
+        "description": "RESTful API 설계 원칙에 따른 Todo Controller를 구현합니다.",
+        "details": "TodoController REST 엔드포인트:\n- GET /api/todos - 할일 목록 조회 (페이징, 검색)\n- GET /api/todos/{id} - 할일 상세 조회\n- POST /api/todos - 새 할일 생성\n- PUT /api/todos/{id} - 할일 전체 수정\n- PATCH /api/todos/{id}/complete - 완료 상태 토글\n- DELETE /api/todos/{id} - 할일 삭제\n\nHTTP 상태코드:\n- 200: 조회 성공\n- 201: 생성 성공\n- 204: 삭제 성공\n- 400: 잘못된 요청\n- 404: 리소스 없음\n\n어노테이션:\n- @RestController, @RequestMapping\n- @Valid, @PathVariable, @RequestBody\n- @GetMapping, @PostMapping, @PutMapping, @DeleteMapping\n\nAPI 응답 표준화: ResponseEntity 활용",
+        "testStrategy": "@WebMvcTest를 활용한 Controller 계층 테스트, MockMvc를 통한 HTTP 요청/응답 테스트, JSON 직렬화 테스트, 입력 검증 테스트",
+        "priority": "medium",
+        "dependencies": [
+          5
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 7,
+        "title": "프론트엔드 폴더 구조 및 기본 컴포넌트 설정",
+        "description": "Vue3 프로젝트의 폴더 구조를 설계하고 기본 컴포넌트들을 생성합니다.",
+        "details": "폴더 구조 설계:\n- src/components/ (재사용 가능한 컴포넌트)\n- src/views/ (페이지 컴포넌트)\n- src/stores/ (Pinia 스토어)\n- src/router/ (라우터 설정)\n- src/api/ (API 클라이언트)\n- src/types/ (TypeScript 타입 정의)\n- src/utils/ (유틸리티 함수)\n- src/assets/ (정적 리소스)\n\n기본 컴포넌트 생성:\n- BaseButton.vue (공통 버튼 컴포넌트)\n- BaseInput.vue (공통 입력 컴포넌트)\n- BaseModal.vue (모달 컴포넌트)\n- AppHeader.vue (헤더 컴포넌트)\n- AppLayout.vue (레이아웃 컴포넌트)\n\nTailwind CSS 커스터마이징:\n- 프로젝트 색상 팔레트\n- 컴포넌트 스타일",
+        "testStrategy": "컴포넌트 렌더링 테스트, 프롭 전달 테스트, 이벤트 방출 테스트, Vitest를 활용한 단위 테스트",
+        "priority": "medium",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 8,
+        "title": "API 클라이언트 및 HTTP 인터셉터 구현",
+        "description": "백엔드 API와 통신하기 위한 HTTP 클라이언트를 구현합니다.",
+        "details": "Axios 기반 API 클라이언트:\n- baseURL 환경변수 설정\n- 요청/응답 인터셉터\n- 에러 핸들링 및 재시도 로직\n- 로딩 상태 관리\n\nAPI 서비스 클래스:\n- TodoApiService 클래스\n- CRUD 메서드 구현:\n  - getTodos(params): 목록 조회\n  - getTodo(id): 상세 조회\n  - createTodo(data): 생성\n  - updateTodo(id, data): 수정\n  - deleteTodo(id): 삭제\n  - toggleComplete(id): 완료 토글\n\nTypeScript 타입 정의:\n- Todo 인터페이스\n- API 요청/응답 타입\n- 에러 타입 정의",
+        "testStrategy": "API 서비스 메서드 테스트, 모킹을 통한 HTTP 요청 테스트, 에러 처리 시나리오 테스트, 인터셉터 동작 테스트",
+        "priority": "medium",
+        "dependencies": [
+          6,
+          7
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 9,
+        "title": "Pinia Store 및 상태 관리 구현",
+        "description": "애플리케이션의 전역 상태를 관리하는 Pinia Store를 구현합니다.",
+        "details": "useTodoStore 구현:\n- state: todos 배열, loading, error 상태\n- getters:\n  - completedTodos: 완료된 할일 목록\n  - pendingTodos: 미완료 할일 목록\n  - totalCount: 전체 할일 개수\n  - completedCount: 완료된 할일 개수\n\n- actions:\n  - fetchTodos(): 할일 목록 로드\n  - fetchTodo(id): 특정 할일 로드\n  - createTodo(data): 새 할일 생성\n  - updateTodo(id, data): 할일 수정\n  - deleteTodo(id): 할일 삭제\n  - toggleComplete(id): 완료 상태 토글\n\n에러 처리 및 로딩 상태:\n- 비동기 작업 중 로딩 표시\n- API 오류 시 사용자 친화적 메시지\n- 낙관적 업데이트 적용",
+        "testStrategy": "Store 상태 변화 테스트, Actions 실행 테스트, Getters 계산 로직 테스트, 에러 상황 처리 테스트",
+        "priority": "medium",
+        "dependencies": [
+          8
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 10,
+        "title": "Todo UI 컴포넌트 및 메인 페이지 구현",
+        "description": "사용자가 할일을 관리할 수 있는 UI 컴포넌트와 메인 페이지를 구현합니다.",
+        "details": "핵심 컴포넌트 구현:\n- TodoList.vue: 할일 목록 표시, 무한 스크롤 또는 페이지네이션\n- TodoItem.vue: 개별 할일 항목, 체크박스, 수정/삭제 버튼\n- TodoForm.vue: 할일 생성/수정 폼, 유효성 검증\n- TodoFilter.vue: 완료상태별 필터링, 검색 기능\n- TodoStats.vue: 통계 정보 (전체/완료/미완료 개수)\n\nメ인 페이지:\n- TodosView.vue: 전체 기능 통합\n- 반응형 디자인 (모바일/데스크톱)\n- 키보드 접근성 지원\n\n기능:\n- 실시간 검색 (디바운싱)\n- 드래그 앤 드롭으로 순서 변경\n- 일괄 완료/삭제 기능\n- 로컬 스토리지 동기화 (오프라인 지원)",
+        "testStrategy": "컴포넌트 렌더링 테스트, 사용자 상호작용 테스트, 폼 입력 검증 테스트, 스토어 연동 테스트, 접근성 테스트",
+        "priority": "medium",
+        "dependencies": [
+          9
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 11,
+        "title": "Docker 컨테이너화 및 통합 테스트",
+        "description": "백엔드와 프론트엔드를 Docker로 컨테이너화하고 전체 시스템 통합 테스트를 수행합니다.",
+        "details": "백엔드 Dockerfile:\n- OpenJDK 17 Alpine 기반\n- JAR 파일 복사 및 실행\n- 헬스체크 설정\n\n프론트엔드 Dockerfile:\n- Node.js Alpine 기반\n- 멀티스테이지 빌드 (빌드 스테이지 + 서빙 스테이지)\n- nginx를 통한 정적 파일 서빙\n\ndocker-compose.yml 완성:\n- MySQL, 백엔드, 프론트엔드 서비스 연동\n- 볼륨 마운트 및 네트워크 설정\n- 환경변수 설정\n- 의존성 관계 설정 (depends_on, healthcheck)\n\n통합 테스트:\n- E2E 테스트 시나리오 작성\n- API-Frontend 연동 테스트\n- 데이터베이스 연동 확인",
+        "testStrategy": "컨테이너 빌드 및 실행 테스트, 서비스 간 통신 테스트, E2E 테스트 실행, 성능 및 안정성 테스트",
+        "priority": "medium",
+        "dependencies": [
+          6,
+          10
+        ],
+        "status": "pending",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2025-09-07T13:48:37.281Z",
+      "updated": "2025-09-07T13:50:10.590Z",
+      "description": "Tasks for master context"
+    }
+  }
+}
