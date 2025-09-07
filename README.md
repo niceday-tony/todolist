@@ -170,7 +170,27 @@ git clone https://github.com/niceday-tony/todolist.git
 cd todolist
 ```
 
-#### 2. Claude Code 설정
+#### 2. 환경 변수 설정
+
+```bash
+# .env 파일 생성 (템플릿 복사)
+cp .env.example .env
+
+# .env 파일을 열어 GitHub Token 설정
+# GITHUB_TOKEN=ghp_your_actual_token_here
+```
+
+**GitHub Personal Access Token 생성 방법:**
+1. GitHub 로그인 → Settings → Developer settings
+2. Personal access tokens → Tokens (classic)
+3. Generate new token (classic) 클릭
+4. 필요한 권한 선택:
+   - `repo` - 저장소 전체 접근
+   - `workflow` - GitHub Actions 워크플로우
+   - `write:packages` - 패키지 레지스트리 업로드
+5. Generate token 클릭 후 토큰을 안전하게 저장
+
+#### 3. Claude Code & MCP 설정
 
 ```bash
 # Claude 로그인
@@ -179,12 +199,12 @@ claude login
 # MCP 설정 복사
 cp .mcp.json ~/.claude/mcp_config.json
 
-# Hook 스크립트 설치
-cp -r .claude/hooks ~/.claude/
-chmod +x ~/.claude/hooks/*
+# Hook 스크립트 설치 (준비 중)
+# cp -r .claude/hooks ~/.claude/
+# chmod +x ~/.claude/hooks/*
 ```
 
-#### 3. 백엔드 실행
+#### 4. 백엔드 실행
 
 ```bash
 cd backend
@@ -192,7 +212,7 @@ cd backend
 # API 서버: http://localhost:8080
 ```
 
-#### 4. 프론트엔드 실행
+#### 5. 프론트엔드 실행
 
 ```bash
 cd frontend
@@ -201,7 +221,7 @@ npm run dev
 # 웹 애플리케이션: http://localhost:5173
 ```
 
-#### 5. Docker 환경
+#### 6. Docker 환경
 
 ```bash
 docker-compose up -d
