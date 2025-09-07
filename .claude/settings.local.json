@@ -2,15 +2,16 @@
   "permissions": {
     "allow": [
       "WebSearch",
-      "Bash(npx:*)"
+      "Bash(npx:*)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []
   },
+  "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "context7",
     "sequential-thinking",
     "github"
-  ],
-  "enableAllProjectMcpServers": true
+  ]
 }
