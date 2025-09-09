@@ -4,7 +4,7 @@ services:
   mysql:
     image: mysql:8.0
     container_name: todolist-mysql
-    restart: always
+    restart: no
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: todolist
@@ -29,7 +29,7 @@ services:
   #     context: ./backend
   #     dockerfile: Dockerfile
   #   container_name: todolist-backend
-  #   restart: always
+  #   restart: no
   #   ports:
   #     - "8080:8080"
   #   depends_on:
@@ -48,7 +48,7 @@ services:
   #     context: ./frontend
   #     dockerfile: Dockerfile
   #   container_name: todolist-frontend
-  #   restart: always
+  #   restart: no
   #   ports:
   #     - "5173:5173"
   #   depends_on:
