@@ -4,9 +4,23 @@
       "WebSearch",
       "Bash(npx:*)",
       "Bash(curl:*)",
-      "mcp__github__search_repositories"
+      "mcp__github__search_repositories",
+      "mcp__sequential-thinking__sequentialthinking"
     ],
-    "deny": [],
+    "deny": [
+      "Read(**/application*.yml)",
+      "Read(**/application*.properties)",
+      "Read(**/*.env)",
+      "Read(**/secrets/**)",
+      "Read(**/*.key)",
+      "Read(**/*.pem)",
+      "Bash(cat **/application*.yml)",
+      "Bash(less **/application*.yml)",
+      "Bash(more **/application*.yml)",
+      "Bash(head **/application*.yml)",
+      "Bash(tail **/application*.yml)",
+      "Bash(grep * **/application*.yml)"
+    ],
     "ask": []
   },
   "enableAllProjectMcpServers": true,
