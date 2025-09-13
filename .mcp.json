@@ -37,6 +37,13 @@
         "task-master-ai"
       ],
       "description": "작업 및 프로젝트 관리 도구"
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ],
+      "description": "브라우저 자동화 및 E2E 테스트 도구"
     }
   }
 }
