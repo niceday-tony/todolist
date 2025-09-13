@@ -1,4 +1,5 @@
 import apiClient from './api';
+import type { Todo, TodoCreateRequest, TodoUpdateRequest } from '../types/Todo';
 
 export interface HealthResponse {
   status: string;

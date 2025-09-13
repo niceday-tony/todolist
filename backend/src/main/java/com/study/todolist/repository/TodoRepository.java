@@ -11,7 +11,9 @@ public interface TodoRepository extends JpaRepository<Todo, Long> {
 
     List<Todo> findByPlantIdOrderByCreatedAtDesc(Long plantId);
 
+    List<Todo> findByPlantIdAndCompletedOrderByCreatedAtDesc(Long plantId, Boolean completed);
+
     List<Todo> findByCompletedOrderByCreatedAtDesc(Boolean completed);
 
-    long countByPlantIdAndCompleted(Long plantId, Boolean completed);
+    Long countByPlantIdAndCompleted(Long plantId, Boolean completed);
 }
