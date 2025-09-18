@@ -191,3 +191,6 @@ CLAUDE.local.md
 # Task Master 임시 파일
 .taskmaster-cache/
 .tm-session/
+# BMAD (local only)
+.bmad-core/
+.bmad-*/
