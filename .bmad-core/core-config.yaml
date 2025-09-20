@@ -33,20 +33,20 @@ team:
     backend:
       - name: tony
         roles: [backend]
-        skills: [java, spring-boot, database]
+        skills: [java, spring-boot, database, api-design]
       - name: martin
         roles: [backend]
         skills: [java, spring-boot, api-design]
       - name: minam
         roles: [backend]
-        skills: [java, spring-boot, testing]
+        skills: [java, spring-boot, api-design]
       - name: sony
         roles: [backend, frontend]
-        skills: [java, spring-boot, react, typescript]
+        skills: [java, spring-boot, react]
     frontend:
       - name: preah
         roles: [frontend]
-        skills: [react, typescript, ui-ux]
+        skills: [react, ui-ux]
   workload:
     backend: 4  # 3 backend + 1 fullstack
     frontend: 2  # 1 frontend + 1 fullstack support
