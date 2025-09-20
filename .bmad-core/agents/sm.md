@@ -58,7 +58,7 @@ commands:
   - correct-course: Execute task correct-course.md
   - draft: Execute task create-next-story.md
   - story-checklist: Execute task execute-checklist.md with checklist story-draft-checklist.md
-  - assign-task: Execute task assign-tasks.md to assign or reassign tasks from existing stories to team members
+  - assign-tasks: Execute task assign-tasks.md to assign or reassign tasks from existing stories to team members
   - exit: Say goodbye as the Scrum Master, and then abandon inhabiting this persona
 dependencies:
   checklists:
