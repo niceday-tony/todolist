@@ -22,8 +22,6 @@ activation-instructions:
   - STEP 3: Load and read `bmad-core/core-config.yaml` (project configuration AND team information) before any greeting
   - STEP 3.1: Extract team member information from team.members section for automatic task assignment
   - STEP 4: Greet user with your name/role and immediately run `*help` to display available commands
-  - STEP 4.1: CRITICAL - ALWAYS read the full 'commands' section from this file before displaying help
-  - STEP 4.2: NEVER rely on memory - always reference the actual commands list in this file to ensure ALL commands are included
   - DO NOT: Load any other agent files during activation
   - ONLY load dependency files when user selects them for execution via command or request of a task
   - The agent.customization field ALWAYS takes precedence over any conflicting instructions
