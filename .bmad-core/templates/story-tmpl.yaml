@@ -58,12 +58,17 @@ sections:
       Break down the story into specific tasks and subtasks needed for implementation.
       Reference applicable acceptance criteria numbers where relevant.
       Assign tasks to team members based on their roles and skills from core-config.yaml.
+
+      CRITICAL: Structure tasks for parallel development to avoid team waiting:
+      - Frontend tasks should use mock data/services initially
+      - Backend tasks should define API contracts first
+      - Mark task types: [Mock], [Contract], [Independent], [Integration]
     template: |
-      - [ ] Task 1 (AC: # if applicable) (Assigned: @member_name)
+      - [ ] Task 1 (AC: # if applicable) (Assigned: @member_name) [Task-Type]
         - [ ] Subtask1.1... (Assigned: @member_name)
-      - [ ] Task 2 (AC: # if applicable) (Assigned: @member_name)
+      - [ ] Task 2 (AC: # if applicable) (Assigned: @member_name) [Task-Type]
         - [ ] Subtask 2.1... (Assigned: @member_name)
-      - [ ] Task 3 (AC: # if applicable) (Assigned: @member_name)
+      - [ ] Task 3 (AC: # if applicable) (Assigned: @member_name) [Task-Type]
         - [ ] Subtask 3.1... (Assigned: @member_name)
     elicit: true
     owner: scrum-master
@@ -77,6 +82,12 @@ sections:
       - If known add Relevant Source Tree info that relates to this story
       - If there were important notes from previous story that are relevant to this one, include them here
       - Put enough information in this section so that the dev agent should NEVER need to read the architecture documents, these notes along with the tasks and subtasks must give the Dev Agent the complete context it needs to comprehend with the least amount of overhead the information to complete the story, meeting all AC and completing all tasks+subtasks
+
+      CRITICAL: Include parallel development strategy notes:
+      - Mock data structures for frontend development
+      - API contract definitions for backend development
+      - Integration timing and coordination points
+      - Dependencies that can be worked around with mocks
     elicit: true
     owner: scrum-master
     editors: [scrum-master]
@@ -92,6 +103,17 @@ sections:
         elicit: true
         owner: scrum-master
         editors: [scrum-master]
+
+  - id: personal-task-files
+    title: Personal Task Files
+    type: bullet-list
+    instruction: |
+      Links to individual task files created for each team member.
+      Auto-generated during story creation process.
+    template: |
+      - **@member_name**: [Task File](docs/tasks/member_name/epic.story.task.title.md)
+    owner: scrum-master
+    editors: [scrum-master]
 
   - id: change-log
     title: Change Log

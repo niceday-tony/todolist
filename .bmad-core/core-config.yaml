@@ -19,6 +19,14 @@ devLoadAlwaysFiles:
   - docs/architecture/source-tree.md
 devDebugLog: .ai/debug-log.md
 devStoryLocation: docs/stories
+devTaskLocation: docs/tasks
+personalWorkspaces:
+  enabled: true
+  baseLocation: docs/tasks
+  structure: "{member_name}/"
+  archiveStrategy: preserve  # preserve, minimal, delete
+  completedFolder: completed
+  teamNotifications: true
 slashPrefix: BMad
 team:
   members:

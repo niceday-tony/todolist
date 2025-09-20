@@ -111,8 +111,19 @@ ALWAYS cite source documents: `[Source: architecture/{filename}.md#{section}]`
       - UI/UX tasks → @preah (ui-ux skills)
       - Frontend integration → @sony (fullstack with react/typescript)
     - **Integration Tasks**: Assign to @sony (fullstack capabilities)
-    - **Format**: `- [ ] Task description (Assigned: @member_name)`
-    - **Workload Balance**: Distribute tasks evenly across appropriate team members
+    - **Parallel Development Strategy** (CRITICAL for 5-person team efficiency):
+      - **Mock Data First**: Frontend tasks should include mock data creation to avoid API waiting
+        - Example: "Create todo list component with mock data (Assigned: @preah) [Mock]"
+      - **API Contract First**: Backend tasks should define API contracts/interfaces before implementation
+        - Example: "Define Todo API contract/interface (Assigned: @martin) [Contract]"
+      - **Independent Components**: Break tasks to allow parallel work without blocking dependencies
+        - Example: "Implement todo form validation (Assigned: @preah) [Independent]"
+      - **Integration Points**: Clearly identify when frontend/backend integration happens
+        - Example: "Integrate todo API with frontend (Assigned: @sony) [Integration]"
+      - **Database Setup Parallel**: Database tasks can run parallel to frontend mock development
+        - Example: "Setup todo entity and repository (Assigned: @tony) [Independent]"
+    - **Format**: `- [ ] Task description (Assigned: @member_name) [Mock/Contract/Independent/Integration]`
+    - **Workload Balance**: Distribute tasks evenly across appropriate team members while maintaining parallel execution
 - Add notes on project structure alignment or discrepancies found in Step 4
 
 ### 6. Story Draft Completion and Review
@@ -122,8 +133,25 @@ ALWAYS cite source documents: `[Source: architecture/{filename}.md#{section}]`
 - Ensure tasks align with both epic requirements and architecture constraints
 - Update status to "Draft" and save the story file
 - Execute `.bmad-core/tasks/execute-checklist` `.bmad-core/checklists/story-draft-checklist`
+
+### 7. Generate Personal Task Files (NEW)
+
+- **Check Personal Workspace Configuration**: Verify `personalWorkspaces.enabled` is true in core-config.yaml
+- **Create Member Directories**: For each assigned team member, create directory structure:
+  - `{baseLocation}/{member_name}/` (e.g., `docs/tasks/tony/`, `docs/tasks/preah/`)
+- **Generate Individual Task Files**: For each task assigned to a team member:
+  - Use `personal-task-tmpl.yaml` template
+  - Create file: `docs/tasks/{member_name}/{epicNum}.{storyNum}.{taskId}.{task_title_short}.md`
+  - Populate with task-specific information from story
+  - Include mock data/API contracts for parallel development
+  - Set initial status to "Todo"
+- **Update Story File**: Add references to personal task files in story document
+
+### 8. Final Summary and Next Steps
+
 - Provide summary to user including:
   - Story created: `{devStoryLocation}/{epicNum}.{storyNum}.story.md`
+  - Personal task files created in: `docs/tasks/{member_name}/`
   - Status: Draft
   - Key technical components included from architecture docs
   - Any deviations or conflicts noted between epic and architecture

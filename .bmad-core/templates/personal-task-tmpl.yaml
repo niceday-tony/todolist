@@ -1,0 +1,90 @@
+# <!-- Powered by BMAD™ Core -->
+template:
+  id: personal-task-template-v1
+  name: Personal Task Document
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/tasks/{{member_name}}/{{epic_num}}.{{story_num}}.{{task_id}}.{{task_title_short}}.md
+    title: "Task {{epic_num}}.{{story_num}}.{{task_id}}: {{task_title_short}}"
+
+workflow:
+  mode: auto-generate
+  elicitation: minimal
+
+sections:
+  - id: task-info
+    title: Task Information
+    type: template-text
+    template: |
+      **Story**: {{epic_num}}.{{story_num}} - {{story_title}}
+      **Assigned to**: @{{member_name}}
+      **Task Type**: {{task_type}}
+      **Dependencies**: {{dependencies}}
+    instruction: Basic task information extracted from story
+
+  - id: task-description
+    title: Task Description
+    type: text
+    instruction: Detailed description of what needs to be implemented
+
+  - id: acceptance-criteria
+    title: Acceptance Criteria
+    type: numbered-list
+    instruction: Specific criteria that must be met for task completion
+
+  - id: technical-notes
+    title: Technical Notes
+    type: text
+    instruction: |
+      Technical implementation details specific to this task:
+      - File locations and naming conventions
+      - Code patterns and standards to follow
+      - Testing requirements
+      - Integration points
+
+  - id: mock-data
+    title: Mock Data / API Contracts
+    type: text
+    instruction: |
+      For [Mock] tasks: Mock data structures and test data
+      For [Contract] tasks: API interface definitions
+      For [Independent] tasks: External dependencies and interfaces
+      For [Integration] tasks: Integration specifications
+
+  - id: status
+    title: Status
+    type: choice
+    choices: [Todo, InProgress, Review, Done, Blocked]
+    instruction: Current status of the task
+
+  - id: completion-date
+    title: Completion Date
+    type: text
+    instruction: Date when task was completed (auto-filled by dev agent)
+
+  - id: time-spent
+    title: Time Spent
+    type: text
+    instruction: Actual time spent on implementation (for future estimation)
+
+  - id: progress-notes
+    title: Progress Notes
+    type: text
+    instruction: Development progress, issues encountered, solutions found
+
+  - id: completion-checklist
+    title: Completion Checklist
+    type: bullet-list
+    template: |
+      - [ ] Implementation complete
+      - [ ] Unit tests written and passing
+      - [ ] Code reviewed
+      - [ ] Documentation updated
+      - [ ] Integration tested (if applicable)
+    instruction: Checklist for task completion
+
+  - id: files-created
+    title: Files Created/Modified
+    type: bullet-list
+    instruction: List of all files created or modified during task implementation
