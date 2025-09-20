@@ -33,13 +33,13 @@ team:
     backend:
       - name: tony
         roles: [backend]
-        skills: [java, spring-boot, database, api-design]
+        skills: [java, spring-boot, database]
       - name: martin
         roles: [backend]
         skills: [java, spring-boot, api-design]
       - name: minam
         roles: [backend]
-        skills: [java, spring-boot, api-design]
+        skills: [java, spring-boot]
       - name: sony
         roles: [backend, frontend]
         skills: [java, spring-boot, react]
