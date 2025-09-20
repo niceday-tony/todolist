@@ -52,23 +52,46 @@ Present assignment mode options:
 ### 4. Task Assignment Logic (Based on Selected Mode)
 
 #### 4.1 Re-assign Specific Tasks
-- Display unassigned tasks with numbered options
+- Display unassigned or reassignable tasks with numbered options
 - For each selected task:
   - Show task details and requirements
-  - Recommend suitable team members based on:
-    - **Task Type**: [Mock] → Frontend, [Contract] → Backend API, [Independent] → Any matching skill, [Integration] → Fullstack
-    - **Skills Match**: Database tasks → @tony, API design → @martin, UI/UX → @preah, General backend → @minam, Fullstack → @sony
-    - **Current Workload**: Display current task count per member
-  - Allow manual selection or accept AI recommendation
-  - Update task assignment in story file
+  - Display team member selection menu with recommendations:
+    ```
+    Task: "Implement user authentication API"
+    Type: [Contract] - Backend API task
+
+    Available team members:
+    1. @tony (Recommended: Database experience) - Current workload: 2 tasks
+    2. @martin (Recommended: API design expertise) - Current workload: 1 task
+    3. @minam (Backend developer) - Current workload: 3 tasks
+    4. @sony (Fullstack capability) - Current workload: 2 tasks
+    5. @preah (Frontend, but can do backend) - Current workload: 1 task
+
+    Who would you like to assign this task to? (Enter number 1-5):
+    ```
+  - Wait for user selection (1-5)
+  - Update task assignment in story file with selected member
 
 #### 4.2 Auto-balance Workload
-- Calculate current workload per team member across all active stories
-- Redistribute unassigned tasks based on:
-  - Skills compatibility matrix
-  - Current workload balance (aim for even distribution)
-  - Task dependencies and parallel execution opportunities
-  - Priority of tasks (based on story status and task type)
+- Display unassigned tasks with current team workload overview
+- For each unassigned task:
+  - Show task details and requirements
+  - Display workload balance recommendation with numbered options:
+    ```
+    Task: "Implement service layer"
+    Current team workload overview:
+
+    Available team members:
+    1. @tony (Current workload: 2 tasks) - Database focus
+    2. @martin (Current workload: 1 task) - API design focus
+    3. @minam (Current workload: 3 tasks) - Backend development
+    4. @sony (Current workload: 2 tasks) - Fullstack capability
+    5. @preah (Current workload: 1 task) - Frontend focus
+
+    Recommendation: Consider @martin or @preah for better workload balance
+    Who would you like to assign this task to? (Enter number 1-5):
+    ```
+  - Wait for user selection and update assignment
 
 #### 4.3 Add New Tasks
 - Prompt for new task details:
@@ -76,14 +99,40 @@ Present assignment mode options:
   - Acceptance criteria reference (if applicable)
   - Task type: [Mock], [Contract], [Independent], [Integration]
   - Dependencies on existing tasks
-- Recommend assignment based on task characteristics
-- Add task to story file in proper format: `- [ ] Task description (Assigned: @member_name) [Task-Type]`
+- After task creation, display assignment options with numbered selection:
+  ```
+  New Task: "Create user validation middleware"
+  Type: [Independent] - Backend middleware task
+
+  Available team members:
+  1. @tony (Backend developer with database skills) - Current workload: 2 tasks
+  2. @martin (Backend developer with API design skills) - Current workload: 1 task
+  3. @minam (Backend developer) - Current workload: 3 tasks
+  4. @sony (Fullstack developer) - Current workload: 2 tasks
+  5. @preah (Frontend developer, but can do backend) - Current workload: 1 task
+
+  Who would you like to assign this task to? (Enter number 1-5):
+  ```
+- Wait for user selection and add task to story file in proper format: `- [ ] Task description (Assigned: @member_name) [Task-Type]`
 
 #### 4.4 Bulk Assignment Review
-- Display all tasks in story with current assignments
-- Allow modification of each assignment interactively
-- Show workload impact and skills match for each proposed change
-- Apply all changes atomically
+- Display all tasks in story with current assignments in numbered format
+- For each task assignment to be modified:
+  ```
+  Task Review: "Frontend component creation"
+  Current Assignment: @preah
+
+  Change assignment for this task?
+  1. Keep current assignment (@preah)
+  2. @tony (Backend developer with database skills) - Current workload: 2 tasks
+  3. @martin (Backend developer with API design skills) - Current workload: 1 task
+  4. @minam (Backend developer) - Current workload: 3 tasks
+  5. @sony (Fullstack developer) - Current workload: 2 tasks
+
+  Who would you like to assign this task to? (Enter number 1-5):
+  ```
+- Show workload impact preview before applying changes
+- Wait for user confirmation before applying all changes atomically
 
 ### 5. Personal Task File Management
 
