@@ -9,8 +9,8 @@ Assign or reassign tasks from existing stories to team members based on their sk
 
 - Load `.bmad-core/core-config.yaml` from the project root
 - Extract team member information from `team.members` section:
-  - **Backend Team**: @tony (database), @martin (api-design), @minam (testing), @sony (fullstack)
-  - **Frontend Team**: @preah (ui-ux), @sony (fullstack with react/typescript)
+  - **Backend Team**: @tony (database), @martin (api-design), @minam (java/spring-boot), @sony (fullstack)
+  - **Frontend Team**: @preah (ui-ux), @sony (fullstack with react)
   - **Skills Matrix**: Load individual skills for each member
 - Load personal workspace configuration: `personalWorkspaces.enabled`, `baseLocation`, `structure`
 
@@ -57,7 +57,7 @@ Present assignment mode options:
   - Show task details and requirements
   - Recommend suitable team members based on:
     - **Task Type**: [Mock] → Frontend, [Contract] → Backend API, [Independent] → Any matching skill, [Integration] → Fullstack
-    - **Skills Match**: Database tasks → @tony, API design → @martin, UI/UX → @preah, Testing → @minam, Fullstack → @sony
+    - **Skills Match**: Database tasks → @tony, API design → @martin, UI/UX → @preah, General backend → @minam, Fullstack → @sony
     - **Current Workload**: Display current task count per member
   - Allow manual selection or accept AI recommendation
   - Update task assignment in story file

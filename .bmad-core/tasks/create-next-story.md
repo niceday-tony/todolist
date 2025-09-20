@@ -105,7 +105,7 @@ ALWAYS cite source documents: `[Source: architecture/{filename}.md#{section}]`
     - **Backend Tasks** (API, database, services): Assign to backend team members based on skills
       - Database tasks → @tony (database skills)
       - API design tasks → @martin (api-design skills)
-      - Testing tasks → @minam (testing skills)
+      - General backend tasks → @minam (java/spring-boot)
       - General backend → any backend member or @sony (fullstack)
     - **Frontend Tasks** (UI, components, styling): Assign to frontend team members
       - UI/UX tasks → @preah (ui-ux skills)
