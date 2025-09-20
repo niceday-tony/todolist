@@ -63,7 +63,7 @@ Present assignment mode options:
     Available team members:
     1. @tony (Recommended: Database experience) - Current workload: 2 tasks
     2. @martin (Recommended: API design expertise) - Current workload: 1 task
-    3. @minam (Backend developer) - Current workload: 3 tasks
+    3. @minam (Backend leader) - Current workload: 3 tasks
     4. @sony (Fullstack capability) - Current workload: 2 tasks
     5. @preah (Frontend, but can do backend) - Current workload: 1 task
 
@@ -84,7 +84,7 @@ Present assignment mode options:
     Available team members:
     1. @tony (Current workload: 2 tasks) - Database focus
     2. @martin (Current workload: 1 task) - API design focus
-    3. @minam (Current workload: 3 tasks) - Backend development
+    3. @minam (Current workload: 3 tasks) - Backend leader
     4. @sony (Current workload: 2 tasks) - Fullstack capability
     5. @preah (Current workload: 1 task) - Frontend focus
 
@@ -107,7 +107,7 @@ Present assignment mode options:
   Available team members:
   1. @tony (Backend developer with database skills) - Current workload: 2 tasks
   2. @martin (Backend developer with API design skills) - Current workload: 1 task
-  3. @minam (Backend developer) - Current workload: 3 tasks
+  3. @minam (Backend leader) - Current workload: 3 tasks
   4. @sony (Fullstack developer) - Current workload: 2 tasks
   5. @preah (Frontend developer, but can do backend) - Current workload: 1 task
 
@@ -126,7 +126,7 @@ Present assignment mode options:
   1. Keep current assignment (@preah)
   2. @tony (Backend developer with database skills) - Current workload: 2 tasks
   3. @martin (Backend developer with API design skills) - Current workload: 1 task
-  4. @minam (Backend developer) - Current workload: 3 tasks
+  4. @minam (Backend leader) - Current workload: 3 tasks
   5. @sony (Fullstack developer) - Current workload: 2 tasks
 
   Who would you like to assign this task to? (Enter number 1-5):
