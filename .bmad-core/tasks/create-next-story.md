@@ -12,7 +12,12 @@ To identify the next logical story based on project progress and epic definition
 
 - Load `.bmad-core/core-config.yaml` from the project root
 - If the file does not exist, HALT and inform the user: "core-config.yaml not found. This file is required for story creation. You can either: 1) Copy it from GITHUB bmad-core/core-config.yaml and configure it for your project OR 2) Run the BMad installer against your project to upgrade and add the file automatically. Please add and configure core-config.yaml before proceeding."
-- Extract key configurations: `devStoryLocation`, `prd.*`, `architecture.*`, `workflow.*`
+- Extract key configurations: `devStoryLocation`, `prd.*`, `architecture.*`, `workflow.*`, `team.*`
+- **Load Team Information**: Extract team member information from `team.members` section for task assignments
+  - Backend developers: {list from config}
+  - Frontend developers: {list from config}
+  - Fullstack developers: {list from config}
+- Store team information for use in Task Assignment section (Step 5)
 
 ### 1. Identify Next Story for Preparation
 
@@ -96,6 +101,18 @@ ALWAYS cite source documents: `[Source: architecture/{filename}.md#{section}]`
   - Each task must reference relevant architecture documentation
   - Include unit testing as explicit subtasks based on the Testing Strategy
   - Link tasks to ACs where applicable (e.g., `Task 1 (AC: 1, 3)`)
+  - **Task Assignment**: For each task, assign appropriate team member based on loaded team information:
+    - **Backend Tasks** (API, database, services): Assign to backend team members based on skills
+      - Database tasks → @tony (database skills)
+      - API design tasks → @martin (api-design skills)
+      - Testing tasks → @minam (testing skills)
+      - General backend → any backend member or @sony (fullstack)
+    - **Frontend Tasks** (UI, components, styling): Assign to frontend team members
+      - UI/UX tasks → @preah (ui-ux skills)
+      - Frontend integration → @sony (fullstack with react/typescript)
+    - **Integration Tasks**: Assign to @sony (fullstack capabilities)
+    - **Format**: `- [ ] Task description (Assigned: @member_name)`
+    - **Workload Balance**: Distribute tasks evenly across appropriate team members
 - Add notes on project structure alignment or discrepancies found in Step 4
 
 ### 6. Story Draft Completion and Review

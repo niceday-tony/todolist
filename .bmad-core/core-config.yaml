@@ -20,3 +20,25 @@ devLoadAlwaysFiles:
 devDebugLog: .ai/debug-log.md
 devStoryLocation: docs/stories
 slashPrefix: BMad
+team:
+  members:
+    backend:
+      - name: tony
+        roles: [backend]
+        skills: [java, spring-boot, database]
+      - name: martin
+        roles: [backend]
+        skills: [java, spring-boot, api-design]
+      - name: minam
+        roles: [backend]
+        skills: [java, spring-boot, testing]
+      - name: sony
+        roles: [backend, frontend]
+        skills: [java, spring-boot, react, typescript]
+    frontend:
+      - name: preah
+        roles: [frontend]
+        skills: [react, typescript, ui-ux]
+  workload:
+    backend: 4  # 3 backend + 1 fullstack
+    frontend: 2  # 1 frontend + 1 fullstack support

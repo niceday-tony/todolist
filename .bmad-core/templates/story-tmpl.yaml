@@ -57,13 +57,14 @@ sections:
     instruction: |
       Break down the story into specific tasks and subtasks needed for implementation.
       Reference applicable acceptance criteria numbers where relevant.
+      Assign tasks to team members based on their roles and skills from core-config.yaml.
     template: |
-      - [ ] Task 1 (AC: # if applicable)
-        - [ ] Subtask1.1...
-      - [ ] Task 2 (AC: # if applicable)
-        - [ ] Subtask 2.1...
-      - [ ] Task 3 (AC: # if applicable)
-        - [ ] Subtask 3.1...
+      - [ ] Task 1 (AC: # if applicable) (Assigned: @member_name)
+        - [ ] Subtask1.1... (Assigned: @member_name)
+      - [ ] Task 2 (AC: # if applicable) (Assigned: @member_name)
+        - [ ] Subtask 2.1... (Assigned: @member_name)
+      - [ ] Task 3 (AC: # if applicable) (Assigned: @member_name)
+        - [ ] Subtask 3.1... (Assigned: @member_name)
     elicit: true
     owner: scrum-master
     editors: [scrum-master, dev-agent]
